@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EURO CONSULTORIA — Perfil (CNPJ 50.317.225/0001-44)</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#16a34a; --muted:#9aa5b1; --glass: rgba(255,255,255,0.03);
+      font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071025 0%,#081226 60%);color:#e6eef6;min-height:100vh;padding:28px}
+    .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:20px}
+    header{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    h1{margin:0;font-size:20px}
+    .subtitle{color:var(--muted);font-size:13px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .big{padding:22px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    button{background:var(--glass);color:var(--accent);border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:8px;cursor:pointer}
+    button.primary{background:linear-gradient(90deg,var(--accent),#22c55e);color:#071022;border-weight:700}
+    .muted{color:var(--muted);font-size:13px}
+    .info{margin-top:12px;display:grid;gap:8px}
+    dt{font-weight:700;color:#dff7e6}
+    dd{margin:0;color:var(--muted)}
+    .map{height:160px;background:linear-gradient(90deg,#031022,#041425);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    .copy-ok{background:#053d13;padding:8px;border-radius:8px;color:#bff3c9;display:inline-block;margin-left:8px}
+    pre{background:#05101a;padding:12px;border-radius:8px;overflow:auto;color:#bfeee0}
+    footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;margin-top:10px}
+    /* Modal */
+    .modal-back{position:fixed;inset:0;background:rgba(1,4,9,0.6);display:none;align-items:center;justify-content:center;z-index:40}
+    .modal{width:min(900px,95%);max-height:80vh;overflow:auto;background:#061324;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .badge{display:inline-block;background:#062b1c;padding:6px 8px;border-radius:999px;color:#bff3c9;font-weight:600}
+    .kbd{background:#071a20;padding:6px 8px;border-radius:6px;font-family:monospace}
+    code{background:rgba(255,255,255,0.02);padding:2px 6px;border-radius:6px}
+    a.link{color:#7ee3b8;text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>EURO CONSULTORIA — Perfil público</h1>
+        <div class="subtitle">CNPJ: <strong id="cnpjText">50.317.225/0001-44</strong> • Matriz • Rio de Janeiro - RJ</div>
+      </div>
+      <div class="row">
+        <button class="primary" onclick="openModal('dados')">Ver ficha completa</button>
+        <button onclick="copyCNPJ()">Copiar CNPJ</button>
+        <button onclick="downloadVCard()">Download vCard</button>
+      </div>
+    </header>
+
+    <!-- main -->
+    <main class="card big">
+      <section>
+        <div style="display:flex;gap:14px;align-items:center">
+          <div style="width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,#0b2b20,#062b1a);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:var(--accent)">EC</div>
+          <div>
+            <div style="font-size:18px;font-weight:700">EURO CONSULTORIA CONTABIL LTDA</div>
+            <div class="muted">Nome fantasia: EURO CONSULTORIA</div>
+            <div style="margin-top:8px"><span class="badge">Atividade: Contabilidade (CNAE 6920601)</span> <span class="muted" style="margin-left:8px">Abertura: 14/04/2023</span></div>
+          </div>
+        </div>
+      </section>
+
+      <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:18px 0">
+
+      <section>
+        <div class="row">
+          <button onclick="toggleSection('dadosCadastrais')">Dados cadastrais</button>
+          <button onclick="toggleSection('endereco')">Endereço & mapa</button>
+          <button onclick="toggleSection('atividades')">Atividades (CNAE)</button>
+          <button onclick="toggleSection('socios')">Sócios</button>
+          <button onclick="toggleSection('contato')">Contato</button>
+          <button onclick="openExternalReceita()">Abrir comprovante Receita</button>
+        </div>
+
+        <div id="dadosCadastrais" class="info" style="display:none;margin-top:12px">
+          <dl>
+            <dt>Nome / Razão social</dt><dd>EURO CONSULTORIA CONTABIL LTDA</dd>
+            <dt>CNPJ</dt><dd id="fieldCnpj">50.317.225/0001-44</dd>
+            <dt>Situação cadastral</dt><dd>ATIVA</dd>
+            <dt>Capital social</dt><dd>R$ 5.000,00</dd>
+            <dt>Data de abertura</dt><dd>14/04/2023</dd>
+            <dt>Optante Simples</dt><dd>Sim</dd>
+          </dl>
+        </div>
+
+        <div id="endereco" class="info" style="display:none;margin-top:12px">
+          <dl>
+            <dt>Endereço</dt>
+            <dd>Rua Siqueira Campos, 00070, Apt 502 VAG — Copacabana — Rio de Janeiro — RJ — CEP 22031-072</dd>
+            <dt>Localização (mapa)</dt>
+            <dd>
+              <div class="map" id="mapBox">
+                <div>
+                  <div style="font-weight:700">Mapa rápido</div>
+                  <div class="muted" style="font-size:13px;margin-top:6px">Clique em "Abrir no Google Maps" para visualizar</div>
+                </div>
+              </div>
+              <div style="margin-top:8px">
+                <button onclick="openMaps()">Abrir no Google Maps</button>
+                <button onclick="copyEndereco()">Copiar endereço</button>
+              </div>
+            </dd>
+          </dl>
+        </div>
+
+        <div id="atividades" class="info" style="display:none;margin-top:12px">
+          <dl>
+            <dt>Atividade principal (CNAE)</dt>
+            <dd>69.20-6-01 — Atividades de contabilidade</dd>
+            <dt>Outras atividades</dt>
+            <dd>Consultoria e auditoria contábil e tributária (informações públicas indicam atuação também em consultoria)</dd>
+          </dl>
+        </div>
+
+        <div id="socios" class="info" style="display:none;margin-top:12px">
+          <dl>
+            <dt>Sócio(s) conhecido(s)</dt>
+            <dd>Marcos Rodrigo Lopes da Costa — qualificação: Sócio-Administrador (registro público em bases de consulta empresarial).</dd>
+          </dl>
+        </div>
+
+        <div id="contato" class="info" style="display:none;margin-top:12px">
+          <dl>
+            <dt>Telefone</dt><dd>(21) 98106-5622 (fonte pública)</dd>
+            <dt>E-mail</dt><dd><a class="link" href="mailto:contato@euroconsultoria.com.br">contato@euroconsultoria.com.br</a> (consta em listagens públicas)</dd>
+          </dl>
+        </div>
+      </section>
+
+      <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:18px 0">
+
+      <section>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button onclick="openModal('dados')">Ficha completa (modal)</button>
+          <button onclick="printPage()">Imprimir / Salvar PDF</button>
+          <button onclick="exportJSON()">Exportar JSON</button>
+          <button onclick="generatePDFCard()">Gerar cartão PDF simples</button>
+        </div>
+
+        <div style="margin-top:14px">
+          <small class="muted">Obs: informações extraídas de bases públicas de consulta a CNPJ (sites de dados públicos e consultas públicas da Receita).</small>
+        </div>
+      </section>
+    </main>
+
+    <!-- sidebar -->
+    <aside class="card">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div>
+          <div class="muted">Status</div>
+          <div style="font-size:18px;font-weight:700;color:#bff3c9">ATIVA</div>
+        </div>
+
+        <div>
+          <div class="muted">Capital social</div>
+          <div style="font-weight:700">R$ 5.000,00</div>
+        </div>
+
+        <div>
+          <div class="muted">Optante Simples</div>
+          <div style="font-weight:700">Sim</div>
+        </div>
+
+        <div>
+          <div class="muted">Links rápidos</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <button onclick="openExternalReceita()">Comprovante Receita</button>
+            <button onclick="openSource('turn0search0')">Ver perfil público (cnpj.biz)</button>
+            <button onclick="openSource('turn0search1')">Ver resumo (AdvDinâmico)</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="muted">JSON rápido</div>
+          <pre id="jsonPreview" style="font-size:12px">carregando...</pre>
+        </div>
+      </div>
+    </aside>
+
+    <footer class="muted">
+      Dados públicos compilados automaticamente — ver fontes para confirmação. Não é documento oficial.
+    </footer>
+
+    <!-- modal -->
+    <div id="modalBack" class="modal-back" onclick="closeModal(event)">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h2 id="modalTitle">Ficha completa — EURO CONSULTORIA (CNPJ 50.317.225/0001-44)</h2>
+        <div class="grid-2" style="margin-top:12px">
+          <div>
+            <dl>
+              <dt>Razão social</dt><dd>EURO CONSULTORIA CONTABIL LTDA</dd>
+              <dt>Nome fantasia</dt><dd>EURO CONSULTORIA</dd>
+              <dt>CNPJ</dt><dd>50.317.225/0001-44</dd>
+              <dt>Data de abertura</dt><dd>14/04/2023</dd>
+              <dt>Situação</dt><dd>ATIVA</dd>
+              <dt>Capital social</dt><dd>R$ 5.000,00</dd>
+            </dl>
+          </div>
+          <div>
+            <dl>
+              <dt>Atividade principal</dt><dd>69.20-6-01 — Atividades de contabilidade</dd>
+              <dt>Endereço</dt><dd>Rua Siqueira Campos, 00070, Apt 502 VAG — Copacabana — Rio de Janeiro — RJ — CEP 22031-072</dd>
+              <dt>Contato (publicado)</dt><dd>(21) 98106-5622 • contato@euroconsultoria.com.br</dd>
+            </dl>
+          </div>
+        </div>
+
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
+        <div class="muted">Observações</div>
+        <ul>
+          <li>Informações agregadas de serviços públicos de consulta a CNPJ (sites de agregação e cadastros); confirme na Receita para uso oficial.</li>
+          <li>Botões na página copiam, exportam e abrem links úteis — tudo local, sem backend.</li>
+        </ul>
+
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+          <button onclick="closeModal()">Fechar</button>
+          <button class="primary" onclick="printPage()">Imprimir / Salvar PDF</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ===== dados públicos (preenchidos) =====
+    const empresa = {
+      razao: "EURO CONSULTORIA CONTABIL LTDA",
+      fantasia: "EURO CONSULTORIA",
+      cnpj: "50.317.225/0001-44",
+      cnpjNumber: "50317225000144",
+      abertura: "14/04/2023",
+      status: "ATIVA",
+      capital: "R$ 5.000,00",
+      simples: "Sim",
+      cnae: "69.20-6-01 (Atividades de contabilidade)",
+      endereco: "Rua Siqueira Campos, 00070, Apt 502 VAG, Copacabana, Rio de Janeiro - RJ, CEP 22031-072",
+      telefone: "(21) 98106-5622",
+      email: "contato@euroconsultoria.com.br",
+      socio: "Marcos Rodrigo Lopes da Costa (Sócio-Administrador)",
+      fontes: {
+        cnpjBiz: "https://cnpj.biz/50317225000144",
+        advDin: "https://advdinamico.com.br/empresas/50317225000144",
+        normas: "https://normasabnt.org/cnpj/2023/04/44/50317225000144.html",
+        inteligen: "https://inteligen.com.br/empresa/euro-consultoria-contabil-ltda-50317225000144"
+      }
+    };
+
+    // preencher JSON preview
+    document.getElementById('jsonPreview').innerText = JSON.stringify(empresa, null, 2);
+
+    // toggles
+    function toggleSection(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // modal
+    function openModal(which){
+      document.getElementById('modalBack').style.display = 'flex';
+    }
+    function closeModal(e){
+      if(e && e.target && e.target.id !== 'modalBack') return;
+      document.getElementById('modalBack').style.display = 'none';
+    }
+
+    // copy CNPJ
+    async function copyCNPJ(){
+      try{
+        await navigator.clipboard.writeText(empresa.cnpj);
+        showTempMessage('CNPJ copiado!', 'copy-ok');
+      }catch(e){ alert('Falha ao copiar: ' + e.message) }
+    }
+    function copyEndereco(){
+      navigator.clipboard.writeText(empresa.endereco).then(()=>showTempMessage('Endereço copiado!', 'copy-ok'));
+    }
+
+    // open maps
+    function openMaps(){
+      const q = encodeURIComponent(empresa.endereco);
+      window.open('https://www.google.com/maps/search/?api=1&query=' + q, '_blank');
+    }
+
+    // external Receita (abre página de consulta genérica)
+    function openExternalReceita(){
+      // abre página de emissão de comprovante (usuário pode inserir o CNPJ manualmente)
+      window.open('https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/', '_blank');
+    }
+
+    // abrir fontes (simples switch para demo)
+    function openSource(key){
+      const map = {
+        turn0search0: empresa.fontes.cnpjBiz,
+        turn0search1: empresa.fontes.advDin,
+        turn0search2: empresa.fontes.normas,
+        turn0search3: empresa.fontes.inteligen
+      };
+      window.open(map[key] || empresa.fontes.cnpjBiz, '_blank');
+    }
+
+    // download vCard (simples)
+    function downloadVCard(){
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:' + empresa.fantasia,
+        'ORG:' + empresa.razao,
+        'TEL;TYPE=WORK,VOICE:' + empresa.telefone,
+        'EMAIL;TYPE=WORK:' + empresa.email,
+        'ADR;TYPE=WORK:;;' + empresa.endereco.replace(/,/g,';'),
+        'NOTE:CNPJ ' + empresa.cnpj,
+        'END:VCARD'
+      ].join('\\r\\n');
+
+      const blob = new Blob([vcard], {type:'text/vcard;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'euro_consultoria.vcf';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // export JSON
+    function exportJSON(){
+      const data = JSON.stringify(empresa, null, 2);
+      const blob = new Blob([data], {type:'application/json;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url; a.download='euro_consultoria.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // print
+    function printPage(){ window.print(); }
+
+    // simple "PDF card" generator using window.print fallback
+    function generatePDFCard(){
+      alert('Será gerado um cartão simples. Use "Salvar como PDF" na caixa de impressão do navegador.');
+      printPage();
+    }
+
+    // small UI helper
+    function showTempMessage(text, cls){
+      const el = document.createElement('span');
+      el.className = cls === 'copy-ok' ? 'copy-ok' : '';
+      el.innerText = text;
+      document.querySelector('header div').appendChild(el);
+      setTimeout(()=>el.remove(), 2500);
+    }
+
+    // iniciais: ocultar se JS habilitado
+    ['dadosCadastrais','endereco','atividades','socios','contato'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.style.display='none';
+    });
+
+    // atualiza campo cnpj (caso precise mudar)
+    document.getElementById('fieldCnpj').innerText = empresa.cnpj;
+  </script>
+</body>
+</html>
